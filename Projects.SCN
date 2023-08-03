@@ -1,0 +1,25 @@
+[UNNAMED]
++SessionDate= 8/03/2023
+crc32v2=3638810529
++CurrentKey=Record Order
+ENV File Path=
+OEM=0
+Record Order=Record Order
+PRO:PKPROJGUIDKEY=PRO:PKPROJGUIDKEY
+Record Number=47R(2)~Rec No~C(0)@N_12@Y?Rec No:
+PRO:PKGUID=62L(2)~Pro:Pkguid~C(0)?Pro:Pkguid:
+PRO:DESCRIPTION=82L(2)~Pro:Description~C(0)?Pro:Description:
+PRO:SOURCEJAVASCRIPT=108L(2)~Pro:Sourcejavascript~C(0)?Pro:Sourcejavascript:
+PRO:SOURCECSS=79L(2)~Pro:Sourcecss~C(0)?Pro:Sourcecss:
+PRO:JAVASCRIPTDESTINATION=128L(2)~Pro:Javascriptdestination~C(0)?Pro:Javascriptdestination:
+PRO:CSSDESTINATION=97L(2)~Pro:Cssdestination~C(0)?Pro:Cssdestination:
+PRO:JAVASCRIPTGZIPDESTINATION=147L(2)~Pro:Javascriptgzipdestination~C(0)?Pro:Javascriptgzipdestination:
+Columns=8
+Column1=RECORD NUMBER
+Column2=PRO:PKGUID
+Column3=PRO:DESCRIPTION
+Column4=PRO:SOURCEJAVASCRIPT
+Column5=PRO:SOURCECSS
+Column6=PRO:JAVASCRIPTDESTINATION
+Column7=PRO:CSSDESTINATION
+Column8=PRO:JAVASCRIPTGZIPDESTINATION
