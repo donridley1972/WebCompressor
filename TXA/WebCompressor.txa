@@ -1615,7 +1615,7 @@ MODIFIED '2023/08/03' ' 7:19:31'
 NAME Main
 [COMMON]
 FROM ABC Window
-MODIFIED '2023/08/03' '11:20:29'
+MODIFIED '2023/08/03' '11:32:22'
 [DATA]
 [SCREENCONTROLS]
 ! PROMPT('abc:'),USE(?abc:Prompt)
@@ -2465,11 +2465,8 @@ PROPERTY:END
   glo:st.Trace('[Main][BRW2.TakeNewSelection]Pro:SourceJavascript[' & Clip(Pro:SourceJavascript) & ']')
   Free(SourceJSQ)
   Free(SourceCssQ)
-  !DIRECTORY(SourceJSQ, Clip(Pro:SourceJavascript) * '\', ff_:NORMAL) 
   DIRECTORY(SourceJSQ, Clip(Pro:SourceJavascript) & '\*.js', ff_:NORMAL)
   DIRECTORY(SourceCssQ, Clip(Pro:SourceCSS) & '\*.css', ff_:NORMAL)
-  !Message(Records(SourceJSQ))
-  !DIRECTORY(SourceJSQ, '*.js', ff_:NORMAL)   
 [END]
 [END]
 [END]
@@ -2486,31 +2483,6 @@ PRIORITY 2500
 PROPERTY:END
 CompressionStarted = TRUE
 MyState = MyState:NextJs
-!      ds_Sleep(200)
-!      YIELD
-!      Loop x = 1 to Records(SourceJSQ)
-!        Get(SourceJSQ,x)
-!        Clear(ThreadQ)
-!        YIELD
-!        ThreadQ.ThreadNo = Start(Compress,,clip(Pro:SourceJavascript) & '\' & clip(SourceJSQ.name),Clip(Pro:JavascriptDestination) & '\' & Clip(SourceJSQ.name))
-!        Add(ThreadQ)      
-!        Resume(ThreadQ.ThreadNo)
-!        ds_sleep(5)
-!      
-!      End 
-!      YIELD
-!      Loop x = 1 to Records(SourceCssQ)
-!        Get(SourceCssQ,x)
-!        Clear(ThreadQ)
-!        YIELD
-!        ThreadQ.ThreadNo = Start(Compress,,clip(Pro:SourceCSS) & '\' & clip(SourceCssQ.name),Clip(Pro:CSSDestination) & '\' & Clip(SourceCssQ.name))
-!        Add(ThreadQ)
-!        Resume(ThreadQ.ThreadNo)
-!        ds_sleep(5)
-!      End 
-!Glo:st.FileNameOnly(Clip(SourceJSQ.name))
-
-!Message('Done!')
 [END]
 [END]
 [END]
@@ -2539,13 +2511,8 @@ WHEN '(),BYTE'
 PROPERTY:BEGIN
 PRIORITY 5500
 PROPERTY:END
-!MyState                     Long
-!MyState:NextJs              Equate(1)
-!MyState:NextCss             Equate(2)  
   Case EVENT()
   Of EVENT:Timer
-
-
       Case MyState
       Of MyState:NextJs
           If Ndx = Records(SourceJSQ)
@@ -2553,7 +2520,6 @@ PROPERTY:END
               MyState = MyState:NextCss
           End
           ndx+=1
-
           Get(SourceJSQ,ndx)
           Clear(ThreadQ)
           YIELD
