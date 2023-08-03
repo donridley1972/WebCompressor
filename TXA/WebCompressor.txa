@@ -1582,12 +1582,6 @@ WHEN  ('WebCompresspr003.clw') ('1')
 #compile "WebCompressor003.clw" -- GENERATED
 #compile "WebCompressor_BC0.CLW" -- GENERATED
 #compile "WEBCOMPRESSOR_BC.CLW" -- GENERATED
-#pragma link("None(zlibwapi.dll), CopyToOutputDirectory=Always") -- GENERATED
-#pragma link("remove(CLAERSLO.LIB)") -- GENERATED
-#pragma link("remove(CLAERSL.LIB)") -- GENERATED
-#pragma link("remove(CLAERS.LIB)") -- GENERATED
-#pragma link("remove(clawel.lib)") -- GENERATED
-#pragma link("remove(clawe.lib)") -- GENERATED
 #pragma link("C%V%tps%X%%L%.lib") -- GENERATED
 #pragma link("WebCompressor.EXE.manifest") -- GENERATED
 #link "WebCompressor.EXE"
@@ -1621,7 +1615,7 @@ MODIFIED '2023/08/03' ' 7:19:31'
 NAME Main
 [COMMON]
 FROM ABC Window
-MODIFIED '2023/08/03' '11:07:44'
+MODIFIED '2023/08/03' '11:20:29'
 [DATA]
 [SCREENCONTROLS]
 ! PROMPT('abc:'),USE(?abc:Prompt)
@@ -2588,8 +2582,8 @@ PROPERTY:END
                   Free(DestJsQ)
                   Free(DestCssQ)
                   !DIRECTORY(SourceJSQ, Clip(Pro:SourceJavascript) * '\', ff_:NORMAL) 
-                  DIRECTORY(DestJsQ, Clip(Pro:JavascriptDestination) & '\*.js', ff_:NORMAL)
-                  DIRECTORY(DestCssQ, Clip(Pro:CSSDestination) & '\*.css', ff_:NORMAL)
+                  DIRECTORY(DestJsQ, Clip(Pro:JavascriptDestination) & '\*.*', ff_:NORMAL)
+                  DIRECTORY(DestCssQ, Clip(Pro:CSSDestination) & '\*.*', ff_:NORMAL)
                   Message('Done!')
               END
           End      
@@ -3925,7 +3919,7 @@ NAME UpdateProjects
 DESCRIPTION 'Form Projects'
 FROM ABC Window
 CATEGORY 'Form'
-MODIFIED '2023/08/03' ' 8:01:11'
+MODIFIED '2023/08/03' '11:23:48'
 [DATA]
 CurrentTab               STRING(80)
 !!> GUID('12e6e9e8-557a-4dd2-acda-020591601565')
@@ -3937,72 +3931,61 @@ Projects
 [INSTANCE]
 2
 [PROMPTS]
-%ButtonAction DEPEND %Control DEFAULT TIMES 9
-WHEN  ('') ('No Special Action')
+%ButtonAction DEPEND %Control DEFAULT TIMES 7
 WHEN  ('?Cancel') ('No Special Action')
 WHEN  ('?Help') ('No Special Action')
 WHEN  ('?LookupFile') ('No Special Action')
 WHEN  ('?LookupFile:2') ('No Special Action')
 WHEN  ('?LookupFile:3') ('No Special Action')
 WHEN  ('?LookupFile:4') ('No Special Action')
-WHEN  ('?LookupFile:5') ('No Special Action')
 WHEN  ('?OK') ('No Special Action')
 
-%ButtonRunName DEPEND %Control DEFAULT TIMES 5
+%ButtonRunName DEPEND %Control DEFAULT TIMES 4
 WHEN  ('?LookupFile') ('')
 WHEN  ('?LookupFile:2') ('')
 WHEN  ('?LookupFile:3') ('')
 WHEN  ('?LookupFile:4') ('')
-WHEN  ('?LookupFile:5') ('')
 
-%ButtonRunParameters DEPEND %Control DEFAULT TIMES 5
+%ButtonRunParameters DEPEND %Control DEFAULT TIMES 4
 WHEN  ('?LookupFile') ('')
 WHEN  ('?LookupFile:2') ('')
 WHEN  ('?LookupFile:3') ('')
 WHEN  ('?LookupFile:4') ('')
-WHEN  ('?LookupFile:5') ('')
 
-%ButtonProcedure DEPEND %Control PROCEDURE TIMES 5
+%ButtonProcedure DEPEND %Control PROCEDURE TIMES 4
 WHEN  ('?LookupFile') ()
 WHEN  ('?LookupFile:2') ()
 WHEN  ('?LookupFile:3') ()
 WHEN  ('?LookupFile:4') ()
-WHEN  ('?LookupFile:5') ()
 
-%ButtonThread DEPEND %Control LONG TIMES 5
+%ButtonThread DEPEND %Control LONG TIMES 4
 WHEN  ('?LookupFile') (0)
 WHEN  ('?LookupFile:2') (0)
 WHEN  ('?LookupFile:3') (0)
 WHEN  ('?LookupFile:4') (0)
-WHEN  ('?LookupFile:5') (0)
 
-%ButtonThreadStack DEPEND %Control DEFAULT TIMES 9
-WHEN  ('') ('25000')
+%ButtonThreadStack DEPEND %Control DEFAULT TIMES 7
 WHEN  ('?Cancel') ('25000')
 WHEN  ('?Help') ('25000')
 WHEN  ('?LookupFile') ('25000')
 WHEN  ('?LookupFile:2') ('25000')
 WHEN  ('?LookupFile:3') ('25000')
 WHEN  ('?LookupFile:4') ('25000')
-WHEN  ('?LookupFile:5') ('25000')
 WHEN  ('?OK') ('25000')
 
-%ButtonParameters DEPEND %Control DEFAULT TIMES 5
+%ButtonParameters DEPEND %Control DEFAULT TIMES 4
 WHEN  ('?LookupFile') ('')
 WHEN  ('?LookupFile:2') ('')
 WHEN  ('?LookupFile:3') ('')
 WHEN  ('?LookupFile:4') ('')
-WHEN  ('?LookupFile:5') ('')
 
-%ButtonRequest DEPEND %Control DEFAULT TIMES 9
-WHEN  ('') ('None')
+%ButtonRequest DEPEND %Control DEFAULT TIMES 7
 WHEN  ('?Cancel') ('None')
 WHEN  ('?Help') ('None')
 WHEN  ('?LookupFile') ('None')
 WHEN  ('?LookupFile:2') ('None')
 WHEN  ('?LookupFile:3') ('None')
 WHEN  ('?LookupFile:4') ('None')
-WHEN  ('?LookupFile:5') ('None')
 WHEN  ('?OK') ('None')
 
 %PreLookupKey DEPEND %Control KEY TIMES 0
@@ -4220,118 +4203,94 @@ WHEN  ('WindowToolbar')TIMES 0
 
 %ExtUITabStyleOverrideGlobal DEPEND %Control LONG TIMES 0
 
-%ExtUITabStyle DEPEND %Control DEFAULT TIMES 6
-WHEN  ('') ('Default')
+%ExtUITabStyle DEPEND %Control DEFAULT TIMES 4
 WHEN  ('?LookupFile') ('Default')
 WHEN  ('?LookupFile:2') ('Default')
 WHEN  ('?LookupFile:3') ('Default')
 WHEN  ('?LookupFile:4') ('Default')
-WHEN  ('?LookupFile:5') ('Default')
 
-%FieldGradientColorType DEPEND %Control DEFAULT TIMES 6
-WHEN  ('') ('Off')
+%FieldGradientColorType DEPEND %Control DEFAULT TIMES 4
 WHEN  ('?LookupFile') ('Off')
 WHEN  ('?LookupFile:2') ('Off')
 WHEN  ('?LookupFile:3') ('Off')
 WHEN  ('?LookupFile:4') ('Off')
-WHEN  ('?LookupFile:5') ('Off')
 
-%FieldGradientColorTypeVariable DEPEND %Control DEFAULT TIMES 6
-WHEN  ('') ('')
+%FieldGradientColorTypeVariable DEPEND %Control DEFAULT TIMES 4
 WHEN  ('?LookupFile') ('')
 WHEN  ('?LookupFile:2') ('')
 WHEN  ('?LookupFile:3') ('')
 WHEN  ('?LookupFile:4') ('')
-WHEN  ('?LookupFile:5') ('')
 
-%FieldGradientColorTypeIsVariable DEPEND %Control LONG TIMES 6
-WHEN  ('') (0)
+%FieldGradientColorTypeIsVariable DEPEND %Control LONG TIMES 4
 WHEN  ('?LookupFile') (0)
 WHEN  ('?LookupFile:2') (0)
 WHEN  ('?LookupFile:3') (0)
 WHEN  ('?LookupFile:4') (0)
-WHEN  ('?LookupFile:5') (0)
 
-%FieldGradientColorFrom DEPEND %Control LONG TIMES 6
-WHEN  ('') (-1)
+%FieldGradientColorFrom DEPEND %Control LONG TIMES 4
 WHEN  ('?LookupFile') (-1)
 WHEN  ('?LookupFile:2') (-1)
 WHEN  ('?LookupFile:3') (-1)
 WHEN  ('?LookupFile:4') (-1)
-WHEN  ('?LookupFile:5') (-1)
 
 %FieldGradientColorFromVariable DEPEND %Control DEFAULT TIMES 0
 
-%FieldGradientColorFromIsVariable DEPEND %Control LONG TIMES 6
-WHEN  ('') (0)
+%FieldGradientColorFromIsVariable DEPEND %Control LONG TIMES 4
 WHEN  ('?LookupFile') (0)
 WHEN  ('?LookupFile:2') (0)
 WHEN  ('?LookupFile:3') (0)
 WHEN  ('?LookupFile:4') (0)
-WHEN  ('?LookupFile:5') (0)
 
-%FieldGradientColorTo DEPEND %Control LONG TIMES 6
-WHEN  ('') (-1)
+%FieldGradientColorTo DEPEND %Control LONG TIMES 4
 WHEN  ('?LookupFile') (-1)
 WHEN  ('?LookupFile:2') (-1)
 WHEN  ('?LookupFile:3') (-1)
 WHEN  ('?LookupFile:4') (-1)
-WHEN  ('?LookupFile:5') (-1)
 
 %FieldGradientColorToVariable DEPEND %Control DEFAULT TIMES 0
 
-%FieldGradientColorToIsVariable DEPEND %Control LONG TIMES 6
-WHEN  ('') (0)
+%FieldGradientColorToIsVariable DEPEND %Control LONG TIMES 4
 WHEN  ('?LookupFile') (0)
 WHEN  ('?LookupFile:2') (0)
 WHEN  ('?LookupFile:3') (0)
 WHEN  ('?LookupFile:4') (0)
-WHEN  ('?LookupFile:5') (0)
 
-%ButtonReturnValueAssignment DEPEND %Control FIELD TIMES 5
+%ButtonReturnValueAssignment DEPEND %Control FIELD TIMES 4
 WHEN  ('?LookupFile') ()
 WHEN  ('?LookupFile:2') ()
 WHEN  ('?LookupFile:3') ()
 WHEN  ('?LookupFile:4') ()
-WHEN  ('?LookupFile:5') ()
 
-%ButtonReturnValueReferenceAssign DEPEND %Control LONG TIMES 5
+%ButtonReturnValueReferenceAssign DEPEND %Control LONG TIMES 4
 WHEN  ('?LookupFile') (0)
 WHEN  ('?LookupFile:2') (0)
 WHEN  ('?LookupFile:3') (0)
 WHEN  ('?LookupFile:4') (0)
-WHEN  ('?LookupFile:5') (0)
 
-%ButtonThreadParameters DEPEND %Control DEFAULT TIMES 5
+%ButtonThreadParameters DEPEND %Control DEFAULT TIMES 4
 WHEN  ('?LookupFile') ('')
 WHEN  ('?LookupFile:2') ('')
 WHEN  ('?LookupFile:3') ('')
 WHEN  ('?LookupFile:4') ('')
-WHEN  ('?LookupFile:5') ('')
 
-%ButtonThreadReturnValueAssignment DEPEND %Control FIELD TIMES 5
+%ButtonThreadReturnValueAssignment DEPEND %Control FIELD TIMES 4
 WHEN  ('?LookupFile') ()
 WHEN  ('?LookupFile:2') ()
 WHEN  ('?LookupFile:3') ()
 WHEN  ('?LookupFile:4') ()
-WHEN  ('?LookupFile:5') ()
 
 %PreLookupProcedureParameters DEPEND %Control DEFAULT TIMES 0
 
 %PostLookupProcedureParameters DEPEND %Control DEFAULT TIMES 0
 
-%PostLookupDuringValidate DEPEND %Control LONG TIMES 13
-WHEN  ('') (1)
+%PostLookupDuringValidate DEPEND %Control LONG TIMES 9
 WHEN  ('?LookupFile') (1)
 WHEN  ('?LookupFile:2') (1)
 WHEN  ('?LookupFile:3') (1)
 WHEN  ('?LookupFile:4') (1)
-WHEN  ('?LookupFile:5') (1)
 WHEN  ('?Pro:CSSDestination') (1)
 WHEN  ('?Pro:Description') (1)
 WHEN  ('?Pro:JavascriptDestination') (1)
-WHEN  ('?Pro:JavascriptGzipDestination') (1)
-WHEN  ('?Pro:PKGuid') (1)
 WHEN  ('?Pro:SourceCSS') (1)
 WHEN  ('?Pro:SourceJavascript') (1)
 
@@ -4351,25 +4310,21 @@ WHEN  ('?Pro:SourceJavascript') (1)
 
 %CheckedControl DEPEND %CheckedHides DEFAULT TIMES 0
 
-%CheckedControlAction DEPEND %CheckedHides DEFAULT TIMES 6
-WHEN  ('')TIMES 0
+%CheckedControlAction DEPEND %CheckedHides DEFAULT TIMES 4
 WHEN  ('?LookupFile')TIMES 0
 WHEN  ('?LookupFile:2')TIMES 0
 WHEN  ('?LookupFile:3')TIMES 0
 WHEN  ('?LookupFile:4')TIMES 0
-WHEN  ('?LookupFile:5')TIMES 0
 
 %CheckedEnables DEPEND %Control MULTI LONG TIMES 0
 
 %CheckedControl1 DEPEND %CheckedEnables DEFAULT TIMES 0
 
-%CheckedControl1Action DEPEND %CheckedEnables DEFAULT TIMES 6
-WHEN  ('')TIMES 0
+%CheckedControl1Action DEPEND %CheckedEnables DEFAULT TIMES 4
 WHEN  ('?LookupFile')TIMES 0
 WHEN  ('?LookupFile:2')TIMES 0
 WHEN  ('?LookupFile:3')TIMES 0
 WHEN  ('?LookupFile:4')TIMES 0
-WHEN  ('?LookupFile:5')TIMES 0
 
 %UncheckedAssigns DEPEND %Control MULTI LONG TIMES 0
 
@@ -4381,75 +4336,61 @@ WHEN  ('?LookupFile:5')TIMES 0
 
 %UnCheckedControl DEPEND %UnCheckedHides DEFAULT TIMES 0
 
-%UnCheckedControlAction DEPEND %UnCheckedHides DEFAULT TIMES 6
-WHEN  ('')TIMES 0
+%UnCheckedControlAction DEPEND %UnCheckedHides DEFAULT TIMES 4
 WHEN  ('?LookupFile')TIMES 0
 WHEN  ('?LookupFile:2')TIMES 0
 WHEN  ('?LookupFile:3')TIMES 0
 WHEN  ('?LookupFile:4')TIMES 0
-WHEN  ('?LookupFile:5')TIMES 0
 
 %UnCheckedEnables DEPEND %Control MULTI LONG TIMES 0
 
 %UnCheckedControl1 DEPEND %UnCheckedEnables DEFAULT TIMES 0
 
-%UnCheckedControl1Action DEPEND %UnCheckedEnables DEFAULT TIMES 6
-WHEN  ('')TIMES 0
+%UnCheckedControl1Action DEPEND %UnCheckedEnables DEFAULT TIMES 4
 WHEN  ('?LookupFile')TIMES 0
 WHEN  ('?LookupFile:2')TIMES 0
 WHEN  ('?LookupFile:3')TIMES 0
 WHEN  ('?LookupFile:4')TIMES 0
-WHEN  ('?LookupFile:5')TIMES 0
 
 %CheckedDisables DEPEND %Control MULTI LONG TIMES 0
 
 %CheckedDisableControl DEPEND %CheckedDisables DEFAULT TIMES 0
 
-%CheckedDisableControlAction DEPEND %CheckedDisables DEFAULT TIMES 6
-WHEN  ('')TIMES 0
+%CheckedDisableControlAction DEPEND %CheckedDisables DEFAULT TIMES 4
 WHEN  ('?LookupFile')TIMES 0
 WHEN  ('?LookupFile:2')TIMES 0
 WHEN  ('?LookupFile:3')TIMES 0
 WHEN  ('?LookupFile:4')TIMES 0
-WHEN  ('?LookupFile:5')TIMES 0
 
 %UnCheckedDisables DEPEND %Control MULTI LONG TIMES 0
 
 %UnCheckedDisableControl DEPEND %UnCheckedDisables DEFAULT TIMES 0
 
-%UnCheckedDisableControlAction DEPEND %UnCheckedDisables DEFAULT TIMES 6
-WHEN  ('')TIMES 0
+%UnCheckedDisableControlAction DEPEND %UnCheckedDisables DEFAULT TIMES 4
 WHEN  ('?LookupFile')TIMES 0
 WHEN  ('?LookupFile:2')TIMES 0
 WHEN  ('?LookupFile:3')TIMES 0
 WHEN  ('?LookupFile:4')TIMES 0
-WHEN  ('?LookupFile:5')TIMES 0
 
 %ActiveImageEnable DEPEND %Control LONG TIMES 0
 
-%AIObjectName DEPEND %Control DEFAULT TIMES 6
-WHEN  ('') ('AIBtn0')
+%AIObjectName DEPEND %Control DEFAULT TIMES 4
 WHEN  ('?LookupFile') ('AIBtn18')
 WHEN  ('?LookupFile:2') ('AIBtn19')
 WHEN  ('?LookupFile:3') ('AIBtn20')
 WHEN  ('?LookupFile:4') ('AIBtn21')
-WHEN  ('?LookupFile:5') ('AIBtn22')
 
-%AIEnableMimicControl DEPEND %Control LONG TIMES 6
-WHEN  ('') (1)
+%AIEnableMimicControl DEPEND %Control LONG TIMES 4
 WHEN  ('?LookupFile') (1)
 WHEN  ('?LookupFile:2') (1)
 WHEN  ('?LookupFile:3') (1)
 WHEN  ('?LookupFile:4') (1)
-WHEN  ('?LookupFile:5') (1)
 
-%AIMimicControl DEPEND %Control DEFAULT TIMES 6
-WHEN  ('') ('?OK')
+%AIMimicControl DEPEND %Control DEFAULT TIMES 4
 WHEN  ('?LookupFile') ('?OK')
 WHEN  ('?LookupFile:2') ('?OK')
 WHEN  ('?LookupFile:3') ('?OK')
 WHEN  ('?LookupFile:4') ('?OK')
-WHEN  ('?LookupFile:5') ('?OK')
 
 %AIImgRound DEPEND %Control LONG TIMES 0
 
@@ -4457,49 +4398,41 @@ WHEN  ('?LookupFile:5') ('?OK')
 
 %AIOverrideImgVariable DEPEND %Control DEFAULT TIMES 0
 
-%AIOverrideImgIsVariable DEPEND %Control LONG TIMES 6
-WHEN  ('') (0)
+%AIOverrideImgIsVariable DEPEND %Control LONG TIMES 4
 WHEN  ('?LookupFile') (0)
 WHEN  ('?LookupFile:2') (0)
 WHEN  ('?LookupFile:3') (0)
 WHEN  ('?LookupFile:4') (0)
-WHEN  ('?LookupFile:5') (0)
 
 %AIDisableImg DEPEND %Control DEFAULT TIMES 0
 
 %AIDisableImgVariable DEPEND %Control DEFAULT TIMES 0
 
-%AIDisableImgIsVariable DEPEND %Control LONG TIMES 6
-WHEN  ('') (0)
+%AIDisableImgIsVariable DEPEND %Control LONG TIMES 4
 WHEN  ('?LookupFile') (0)
 WHEN  ('?LookupFile:2') (0)
 WHEN  ('?LookupFile:3') (0)
 WHEN  ('?LookupFile:4') (0)
-WHEN  ('?LookupFile:5') (0)
 
 %AIHotImg DEPEND %Control DEFAULT TIMES 0
 
 %AIHotImgVariable DEPEND %Control DEFAULT TIMES 0
 
-%AIHotImgIsVariable DEPEND %Control LONG TIMES 6
-WHEN  ('') (0)
+%AIHotImgIsVariable DEPEND %Control LONG TIMES 4
 WHEN  ('?LookupFile') (0)
 WHEN  ('?LookupFile:2') (0)
 WHEN  ('?LookupFile:3') (0)
 WHEN  ('?LookupFile:4') (0)
-WHEN  ('?LookupFile:5') (0)
 
 %AIPressedImg DEPEND %Control DEFAULT TIMES 0
 
 %AIPressedImgVariable DEPEND %Control DEFAULT TIMES 0
 
-%AIPressedImgIsVariable DEPEND %Control LONG TIMES 6
-WHEN  ('') (0)
+%AIPressedImgIsVariable DEPEND %Control LONG TIMES 4
 WHEN  ('?LookupFile') (0)
 WHEN  ('?LookupFile:2') (0)
 WHEN  ('?LookupFile:3') (0)
 WHEN  ('?LookupFile:4') (0)
-WHEN  ('?LookupFile:5') (0)
 
 [ADDITION]
 NAME WinEvent WinEvent
@@ -4591,15 +4524,13 @@ NAME ABC ViewFormActions
 INSTANCE 5
 [PROMPTS]
 %ForceViewOnly LONG  (0)
-%ViewAction DEPEND %Control DEFAULT TIMES 23
-WHEN  ('') ('None')
+%ViewAction DEPEND %Control DEFAULT TIMES 17
 WHEN  ('?Cancel') ('None')
 WHEN  ('?Help') ('None')
 WHEN  ('?LookupFile') ('Disable')
 WHEN  ('?LookupFile:2') ('Disable')
 WHEN  ('?LookupFile:3') ('Disable')
 WHEN  ('?LookupFile:4') ('Disable')
-WHEN  ('?LookupFile:5') ('Disable')
 WHEN  ('?OK') ('None')
 WHEN  ('?Pro:CSSDestination') ('ReadOnly')
 WHEN  ('?Pro:CSSDestination:Prompt') ('None')
@@ -4607,10 +4538,6 @@ WHEN  ('?Pro:Description') ('ReadOnly')
 WHEN  ('?Pro:Description:Prompt') ('None')
 WHEN  ('?Pro:JavascriptDestination') ('ReadOnly')
 WHEN  ('?Pro:JavascriptDestination:Prompt') ('None')
-WHEN  ('?Pro:JavascriptGzipDestination') ('ReadOnly')
-WHEN  ('?Pro:JavascriptGzipDestination:Prompt') ('None')
-WHEN  ('?Pro:PKGuid') ('ReadOnly')
-WHEN  ('?Pro:PKGuid:Prompt') ('None')
 WHEN  ('?Pro:SourceCSS') ('ReadOnly')
 WHEN  ('?Pro:SourceCSS:Prompt') ('None')
 WHEN  ('?Pro:SourceJavascript') ('ReadOnly')
@@ -5215,171 +5142,45 @@ WHEN  ('Default')TIMES 0
 
 %ClassDataDim4 DEPEND %ClassPropertyItems DEFAULT TIMES 0
 
-[INSTANCE]
-INSTANCE 11
-[PROMPTS]
-%ClassItem UNIQUE DEFAULT  ('Default')
-%DefaultBaseClassType DEPEND %ClassItem DEFAULT TIMES 1
-WHEN  ('Default') ('SelectFileClass')
-
-%ActualDefaultBaseClassType DEPEND %ClassItem DEFAULT TIMES 1
-WHEN  ('Default') ('')
-
-%ClassLines DEPEND %ClassItem MULTI DEFAULT TIMES 0
-
-%DOSFileDialogHeader DEFAULT  ('Javascript gZip Destination')
-%DOSFileField FIELD  (Pro:JavascriptGzipDestination)
-%DOSInitialDirectory DEFAULT  ('')
-%DOSInitialFilename DEFAULT  ('')
-%ReturnToOriginalDir LONG  (1)
-%AllowLongFilenames LONG  (1)
-%DOSFileDialogType DEFAULT  ('Directory')
-%AllowNoError LONG  (0)
-%DefaultOnCancel LONG  (0)
-%AllowMultiSelect LONG  (0)
-%ActionsToTake DEFAULT  ('')
-%AssignToImageControl LONG  (0)
-%ImageControl DEFAULT  ('')
-%ImageResize LONG  (1)
-%DOSVariableMask LONG  (0)
-%DOSMaskVariable DEFAULT  ('')
-%DOSMaskDesc DEFAULT  ('All Files')
-%DOSMask DEFAULT  ('*.*')
-%DOSMoreMasks MULTI LONG  ()
-%DOSMoreMaskDesc DEPEND %DOSMoreMasks DEFAULT TIMES 0
-
-%DOSMoreMask DEPEND %DOSMoreMasks DEFAULT TIMES 0
-
-%RedisplayWindow LONG  (1)
-%UpdateFields MULTI LONG  ()
-%UpdateFeq DEPEND %UpdateFields DEFAULT TIMES 0
-
-%GlobalObject DEPEND %ClassItem DEFAULT TIMES 1
-WHEN  ('Default') ('NO')
-
-%ThisObjectName DEPEND %ClassItem DEFAULT TIMES 1
-WHEN  ('Default') ('FileLookup11')
-
-%UseDefaultABCBaseClass DEPEND %ClassItem LONG TIMES 1
-WHEN  ('Default') (1)
-
-%UseABCBaseClass DEPEND %ClassItem LONG TIMES 1
-WHEN  ('Default') (1)
-
-%ABCBaseClass DEPEND %ClassItem DEFAULT TIMES 1
-WHEN  ('Default') ('ADOBlob')
-
-%ExtBaseClass DEPEND %ClassItem DEFAULT TIMES 0
-
-%BaseClassIncludeFile DEPEND %ClassItem DEFAULT TIMES 0
-
-%DeriveFromBaseClass DEPEND %ClassItem LONG TIMES 1
-WHEN  ('Default') (0)
-
-%NewMethods DEPEND %ClassItem MULTI LONG TIMES 0
-
-%NewMethodName DEPEND %NewMethods DEFAULT TIMES 0
-
-%NewMethodPrototype DEPEND %NewMethods DEFAULT TIMES 0
-
-%NewClassPropertyItems DEPEND %ClassItem MULTI LONG TIMES 0
-
-%NewClassProperty DEPEND %NewClassPropertyItems DEFAULT TIMES 0
-
-%NewClassDataType DEPEND %NewClassPropertyItems DEFAULT TIMES 1
-WHEN  ('Default')TIMES 0
-
-%NewClassOtherType DEPEND %NewClassPropertyItems DEFAULT TIMES 0
-
-%NewClassDataIsRef DEPEND %NewClassPropertyItems LONG TIMES 0
-
-%NewClassDataSize DEPEND %NewClassPropertyItems DEFAULT TIMES 0
-
-%NewClassDataDim1 DEPEND %NewClassPropertyItems DEFAULT TIMES 0
-
-%NewClassDataDim2 DEPEND %NewClassPropertyItems DEFAULT TIMES 0
-
-%NewClassDataDim3 DEPEND %NewClassPropertyItems DEFAULT TIMES 0
-
-%NewClassDataDim4 DEPEND %NewClassPropertyItems DEFAULT TIMES 0
-
-%ClassMethods DEPEND %ClassItem MULTI LONG TIMES 0
-
-%ClassMethodName DEPEND %ClassMethods DEFAULT TIMES 0
-
-%ClassMethodPrototype DEPEND %ClassMethods DEFAULT TIMES 0
-
-%ClassPropertyItems DEPEND %ClassItem MULTI LONG TIMES 0
-
-%ClassProperty DEPEND %ClassPropertyItems DEFAULT TIMES 0
-
-%ClassDataType DEPEND %ClassPropertyItems DEFAULT TIMES 1
-WHEN  ('Default')TIMES 0
-
-%ClassOtherType DEPEND %ClassPropertyItems DEFAULT TIMES 0
-
-%ClassDataIsRef DEPEND %ClassPropertyItems LONG TIMES 0
-
-%ClassDataSize DEPEND %ClassPropertyItems DEFAULT TIMES 0
-
-%ClassDataDim1 DEPEND %ClassPropertyItems DEFAULT TIMES 0
-
-%ClassDataDim2 DEPEND %ClassPropertyItems DEFAULT TIMES 0
-
-%ClassDataDim3 DEPEND %ClassPropertyItems DEFAULT TIMES 0
-
-%ClassDataDim4 DEPEND %ClassPropertyItems DEFAULT TIMES 0
-
 [WINDOW]
-QuickWindow WINDOW('Form Projects'),AT(,,366,127),FONT('Segoe UI',10,,FONT:regular,CHARSET:DEFAULT), |
+QuickWindow WINDOW('Form Projects'),AT(,,366,95),FONT('Segoe UI',10,,FONT:regular,CHARSET:DEFAULT), |
           RESIZE,AUTO,CENTER,ICON('AppIcon.ico'),GRAY,HLP('UpdateProjects'),SYSTEM
-          BUTTON('&OK'),AT(209,106,49,14),USE(?OK),LEFT,ICON('WAOK.ICO'),DEFAULT,FLAT,MSG('Accept dat' & |
+          BUTTON('&OK'),AT(209,73,49,14),USE(?OK),LEFT,ICON('WAOK.ICO'),DEFAULT,FLAT,MSG('Accept dat' & |
             'a and close the window'),TIP('Accept data and close the window'),#ORIG(?OK),#SEQ(2), |
             #ORDINAL(1)
-          BUTTON('&Cancel'),AT(261,106,49,14),USE(?Cancel),LEFT,ICON('WACANCEL.ICO'),FLAT, |
-            MSG('Cancel operation'),TIP('Cancel operation'),#ORIG(?Cancel),#SEQ(3),#ORDINAL(2)
-          BUTTON('&Help'),AT(314,106,49,14),USE(?Help),LEFT,ICON('WAHELP.ICO'),FLAT,MSG('See Help Window'), |
+          BUTTON('&Cancel'),AT(261,73,49,14),USE(?Cancel),LEFT,ICON('WACANCEL.ICO'),FLAT,MSG('Cancel operation'), |
+            TIP('Cancel operation'),#ORIG(?Cancel),#SEQ(3),#ORDINAL(2)
+          BUTTON('&Help'),AT(314,73,49,14),USE(?Help),LEFT,ICON('WAHELP.ICO'),FLAT,MSG('See Help Window'), |
             STD(STD:Help),TIP('See Help Window'),#ORIG(?Help),#SEQ(4),#ORDINAL(3)
-          ENTRY(@s16),AT(121,2,68,10),USE(Pro:PKGuid),LEFT(2),#LINK(?Pro:PKGuid:Prompt),#ORIG(Pro:PKGuid), |
-            #ORDINAL(4)
-          PROMPT('PKG uid:'),AT(5,2),USE(?Pro:PKGuid:Prompt),TRN,#LINK(?Pro:PKGuid),#ORIG(?Pro:PKGuid:Prompt), |
-            #ORDINAL(5)
-          PROMPT('Description:'),AT(5,16),USE(?Pro:Description:Prompt),TRN,#LINK(?Pro:Description), |
+          PROMPT('Description:'),AT(5,4),USE(?Pro:Description:Prompt),TRN,#LINK(?Pro:Description), |
             #ORIG(?Pro:Description:Prompt),#ORDINAL(6)
-          ENTRY(@s100),AT(121,16,226,10),USE(Pro:Description),LEFT(2),#LINK(?Pro:Description:Prompt), |
+          ENTRY(@s100),AT(121,4,226,10),USE(Pro:Description),LEFT(2),#LINK(?Pro:Description:Prompt), |
             #ORIG(Pro:Description),#ORDINAL(7)
-          PROMPT('Source Javascript:'),AT(5,31),USE(?Pro:SourceJavascript:Prompt),TRN,#LINK(?Pro:SourceJavascript), |
+          PROMPT('Source Javascript:'),AT(5,19),USE(?Pro:SourceJavascript:Prompt),TRN,#LINK(?Pro:SourceJavascript), |
             #ORIG(?Pro:SourceJavascript:Prompt),#ORDINAL(8)
-          ENTRY(@s255),AT(121,31,226,10),USE(Pro:SourceJavascript),LEFT(2),#LINK(?Pro:SourceJavascript:Prompt), |
+          ENTRY(@s255),AT(121,19,226,10),USE(Pro:SourceJavascript),LEFT(2),#LINK(?Pro:SourceJavascript:Prompt), |
             #ORIG(Pro:SourceJavascript),#ORDINAL(9)
-          PROMPT('Source CSS:'),AT(5,45),USE(?Pro:SourceCSS:Prompt),TRN,#LINK(?Pro:SourceCSS), |
+          PROMPT('Source CSS:'),AT(5,33),USE(?Pro:SourceCSS:Prompt),TRN,#LINK(?Pro:SourceCSS), |
             #ORIG(?Pro:SourceCSS:Prompt),#ORDINAL(10)
-          ENTRY(@s255),AT(121,45,226,10),USE(Pro:SourceCSS),LEFT(2),#LINK(?Pro:SourceCSS:Prompt), |
+          ENTRY(@s255),AT(121,33,226,10),USE(Pro:SourceCSS),LEFT(2),#LINK(?Pro:SourceCSS:Prompt), |
             #ORIG(Pro:SourceCSS),#ORDINAL(11)
-          PROMPT('Javascript Destination:'),AT(5,59),USE(?Pro:JavascriptDestination:Prompt), |
+          PROMPT('Javascript Destination:'),AT(5,47),USE(?Pro:JavascriptDestination:Prompt), |
             TRN,#LINK(?Pro:JavascriptDestination),#ORIG(?Pro:JavascriptDestination:Prompt), |
             #ORDINAL(12)
-          ENTRY(@s255),AT(121,59,226,10),USE(Pro:JavascriptDestination),LEFT(2),#LINK(?Pro:JavascriptDestination:Prompt), |
+          ENTRY(@s255),AT(121,47,226,10),USE(Pro:JavascriptDestination),LEFT(2),#LINK(?Pro:JavascriptDestination:Prompt), |
             #ORIG(Pro:JavascriptDestination),#ORDINAL(13)
-          PROMPT('CSS Destination:'),AT(5,72),USE(?Pro:CSSDestination:Prompt),TRN,#LINK(?Pro:CSSDestination), |
+          PROMPT('CSS Destination:'),AT(5,60),USE(?Pro:CSSDestination:Prompt),TRN,#LINK(?Pro:CSSDestination), |
             #ORIG(?Pro:CSSDestination:Prompt),#ORDINAL(14)
-          ENTRY(@s255),AT(121,72,226,10),USE(Pro:CSSDestination),LEFT(2),#LINK(?Pro:CSSDestination:Prompt), |
+          ENTRY(@s255),AT(121,60,226,10),USE(Pro:CSSDestination),LEFT(2),#LINK(?Pro:CSSDestination:Prompt), |
             #ORIG(Pro:CSSDestination),#ORDINAL(15)
-          PROMPT('Javascript gZip Destination:'),AT(5,87),USE(?Pro:JavascriptGzipDestination:Prompt), |
-            TRN,#LINK(?Pro:JavascriptGzipDestination),#ORIG(?Pro:JavascriptGzipDestination:Prompt), |
-            #ORDINAL(16)
-          ENTRY(@s255),AT(121,87,226,10),USE(Pro:JavascriptGzipDestination),LEFT(2),#LINK(?Pro:JavascriptGzipDestination:Prompt), |
-            #ORIG(Pro:JavascriptGzipDestination),#ORDINAL(17)
-          BUTTON,AT(351,31,12,11),USE(?LookupFile),ICON('Search1.ico'),#ORIG(?LookupFile), |
+          BUTTON,AT(351,19,12,11),USE(?LookupFile),ICON('Search1.ico'),#ORIG(?LookupFile), |
             #SEQ(7),#ORDINAL(18)
-          BUTTON,AT(351,45,12,11),USE(?LookupFile:2),ICON('Search1.ico'),#ORIG(?LookupFile), |
+          BUTTON,AT(351,33,12,11),USE(?LookupFile:2),ICON('Search1.ico'),#ORIG(?LookupFile), |
             #SEQ(8),#ORDINAL(19)
-          BUTTON,AT(351,58,12,11),USE(?LookupFile:3),ICON('Search1.ico'),#ORIG(?LookupFile), |
+          BUTTON,AT(351,47,12,11),USE(?LookupFile:3),ICON('Search1.ico'),#ORIG(?LookupFile), |
             #SEQ(9),#ORDINAL(20)
-          BUTTON,AT(351,72,12,11),USE(?LookupFile:4),ICON('Search1.ico'),#ORIG(?LookupFile), |
+          BUTTON,AT(351,60,12,11),USE(?LookupFile:4),ICON('Search1.ico'),#ORIG(?LookupFile), |
             #SEQ(10),#ORDINAL(21)
-          BUTTON,AT(351,87,12,11),USE(?LookupFile:5),ICON('Search1.ico'),#ORIG(?LookupFile), |
-            #SEQ(11),#ORDINAL(22)
         END
 
 [END]
